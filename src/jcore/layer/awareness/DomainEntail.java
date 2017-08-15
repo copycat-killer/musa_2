@@ -103,11 +103,27 @@ public class DomainEntail {
 	 * This method returns the right path for DVL program considering the OS.
 	 * @return path
 	 */
-	private String setPath(){
-		if( System.getProperty("os.name").startsWith("Windows") )
-			return "./ext/dlv.mingw.exe";
-		else //TODO considering other OS, such as Mac OS or Linux based OS
-			return "./ext/dlv.i386-apple-darwin.bin";
+	private String setPath() {
+		try {
+			String os = System.getenv("os.name");
+
+			if (os.startsWith("Windows"))
+				return "./ext/dlv.mingw.exe";
+			else if (os.startsWith("Linux")) {
+				if (System.getProperty("os.arch").endsWith("i386"))
+					return "./ext/dlv.i386-linux-elf-static.bin";
+				else
+					return "./ext/dlv.x86-64-linux-elf-static.bin";
+			}
+			else if (os.startsWith("Mac"))
+				return "./ext/dlv.i386-apple-darwin.bin";
+			else
+				throw new Exception("Operating System not supported by DLV");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 
 }
