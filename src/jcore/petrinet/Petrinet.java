@@ -148,5 +148,4 @@ extends PetrinetObject {
     public List<InhibitorArc> getInhibitors() {
         return inhibitors;
     }
-
 }
