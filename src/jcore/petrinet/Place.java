@@ -36,7 +36,7 @@ public class Place extends PetrinetObject {
 	}
 
 	/**
-	 * w�rde die Stelle noch so viele Tokens aufnehmen k�nnen?
+	 * worde die Stelle noch so viele Tokens aufnehmen k�nnen?
 	 *
 	 * @param newTokens
 	 * @return
